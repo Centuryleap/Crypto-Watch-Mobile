@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1071517838829",
+    "project_id": "cryptowatch-4bba6",
+    "storage_bucket": "cryptowatch-4bba6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071517838829:android:87544037c78c3690274be4",
+        "android_client_info": {
+          "package_name": "com.example.cryptowatch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1071517838829-es6mk3vbl0bctdhjgsnr22cdh8camgak.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJQZ35htYekdFd09VMgdCMnyHFxXvHWLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1071517838829-es6mk3vbl0bctdhjgsnr22cdh8camgak.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
