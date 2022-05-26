@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-          fontFamily: 'SF-Pro',
+          fontFamily: 'Argentum-Sans',
           primarySwatch: Colors.blue,
         ),
         home: SplashScreen(),
