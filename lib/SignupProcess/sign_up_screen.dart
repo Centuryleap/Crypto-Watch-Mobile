@@ -1,4 +1,6 @@
+import 'package:cryptowatch/OtherScreens/home_screen.dart';
 import 'package:cryptowatch/SignupProcess/sign_in_screen.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:cryptowatch/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,6 +13,7 @@ class SignUpScreen extends StatelessWidget {
     double widthSize = MediaQuery.of(context).size.width;
     double heightSize = MediaQuery.of(context).size.height;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Background2,
       body: Padding(
         padding: const EdgeInsets.only(left: 24, right: 24, top: 132),
@@ -74,7 +77,10 @@ class SignUpScreen extends StatelessWidget {
                     height: 48,
                   ),
                   MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: ((context) => SignInScreen())));
+                    },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16)),
                     color: Primary2,
@@ -93,8 +99,14 @@ class SignUpScreen extends StatelessWidget {
                             color: Text3,
                           ),
                           children: [
-                            TextSpan(text: 'Log in to your account', style: BodyText2.copyWith(color: Primary3))
-                          ]))
+                        TextSpan(
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => SignInScreen())),
+                            text: 'Log in to your account',
+                            style: BodyText2.copyWith(color: Primary3))
+                      ]))
                 ]),
           );
         }),
