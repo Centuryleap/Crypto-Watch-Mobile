@@ -105,6 +105,14 @@ flutter:
           weight: 600
         - asset: assets/fonts/FontsFree-Net-SFProText-Bold.ttf
           weight: 700
+    - family: Argentum-Sans
+      fonts:
+        - asset: assets/fonts/argentum-sans.light.ttf
+          weight: 300
+        - asset: assets/fonts/argentum-sans.medium.ttf
+          weight: 500
+        - asset: assets/fonts/argentum-sans.semibold.ttf
+          weight: 600
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

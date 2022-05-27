@@ -3,6 +3,7 @@ import 'package:cryptowatch/OtherScreens/BottomNavigationScreen.dart';
 import 'package:cryptowatch/OtherScreens/testing_screen.dart';
 
 import 'package:cryptowatch/SignupProcess/OnboardingScreen.dart';
+import 'package:cryptowatch/SignupProcess/sign_up_screen.dart';
 import 'package:cryptowatch/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.of(context).pushReplacement(PageTransition(
       child: 
       //TestingScreen(),
-      OnboardingScreen(),
+      SignUpScreen(),
       type: PageTransitionType.fade,
       duration: Duration(milliseconds: 1500),
       curve: Curves.fastLinearToSlowEaseIn,

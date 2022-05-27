@@ -1,10 +1,12 @@
+import 'package:cryptowatch/SignupProcess/forgot_password.dart';
 import 'package:cryptowatch/SignupProcess/login_screen.dart';
+import 'package:cryptowatch/SignupProcess/sign_up_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constants.dart';
-
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -17,131 +19,105 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(left: 24, right: 24, top: 90),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                  'Welcome',
-                  style: TextStyle( fontWeight: FontWeight.w600, fontSize: 16, color: Black6,),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Sign Up',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 32,
-                    color: Colors.black,
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Background2,
+      body: Padding(
+        padding: const EdgeInsets.only(left: 24, right: 24, top: 132),
+        child: Builder(builder: (context) {
+          return Container(
+            alignment: Alignment.center,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.asset('assets/images/cryptowatch_logo_blue.svg'),
+                  SizedBox(
+                    height: 36,
                   ),
-                ),
-              
-              SizedBox(height: 65),
-              TextFormField(
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+                  Text('Welcome Back', style: Header1.copyWith(color: Text1)),
+                  SizedBox(
+                    height: 4,
                   ),
-                  labelText: 'Username',
-                  labelStyle:
-                      TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                ),
-                style: TextStyle(fontSize: 14),
-              ),
-              SizedBox(height: 40),
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+                  Text('Enter your details to sign into\n your account',
+                      textAlign: TextAlign.center,
+                      style: BodyText1.copyWith(color: Text3)),
+                  SizedBox(
+                    height: 56,
                   ),
-                  labelText: 'Email Address',
-                  labelStyle:
-                      TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                ),
-                style: TextStyle(fontSize: 14),
-              ),
-              SizedBox(height: 40),
-              TextFormField(
-                keyboardType: TextInputType.text,
-                obscureText: _obscureText,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      fillColor: Background1,
+                      hintText: 'Email address',
+                      hintStyle: BodyText1.copyWith(color: Text3),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
                   ),
-                  labelText: 'Password',
-                  labelStyle:
-                      TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                  suffixIcon: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _obscureText = !_obscureText;
-                        print(_obscureText);
-                      });
+                  SizedBox(
+                    height: 16,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      fillColor: Background1,
+                      hintText: 'Password',
+                      hintStyle: BodyText1.copyWith(color: Text3),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Align(
+                      alignment: Alignment.bottomRight,
+                      child: GestureDetector(
+                        onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => ForgetPasswordScreen())),
+                        child: Text(
+                          "Forget password?",
+                          style:
+                              TextStyle(color: Color(0XFF6888F8), fontSize: 12),
+                        ),
+                      )),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  MaterialButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: ((context) => SignInScreen())));
                     },
-                    child: Icon(_obscureText
-                        ? Icons.visibility_outlined
-                        : Icons.visibility_off_outlined),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16)),
+                    color: Primary2,
+                    minWidth: double.infinity,
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: Text('Continue',
+                        style: BodyText1.copyWith(color: Colors.white)),
                   ),
-                ),
-                style: TextStyle(fontSize: 14),
-              ),
-              SizedBox(
-                height: 35,
-              ),
-             
-              SizedBox(height: 57),
-              MaterialButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                color: PrimaryBlue,
-                onPressed: () {
-          //        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => WelcomeScreen())  , (route) => false);
-                },
-                minWidth: double.infinity,
-                padding: EdgeInsets.symmetric(
-                  vertical: 22,
-                ),
-                child: Text(
-                  'Done',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600),
-                ),
-              ),
-              SizedBox(height: 36),
-              Container(
-                alignment: Alignment.center,
-                child: RichText(
-                  text: TextSpan(
-                      text: 'I already have an account, ',
-                      style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black,
-                          height: 1.5,
-                          fontWeight: FontWeight.w400),
-                      children: <TextSpan>[
+                  SizedBox(
+                    height: 32,
+                  ),
+                  RichText(
+                      text: TextSpan(
+                          text: 'Don’t have an account? ',
+                          style: BodyText2.copyWith(
+                            color: Text3,
+                          ),
+                          children: [
                         TextSpan(
-                            text: 'Login',
-                            style: TextStyle(color: PrimaryBlu2e),
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                        builder: (context) => LoginScreen()),
-                                    (route) => false);
-                              }),
-                      ]),
-                ),
-              ),
-            ],
-          ),
-        ),
+                              ..onTap = () => Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUpScreen())),
+                            text: 'Create one',
+                            style: BodyText2.copyWith(color: Primary3))
+                      ]))
+                ]),
+          );
+        }),
       ),
     );
   }
