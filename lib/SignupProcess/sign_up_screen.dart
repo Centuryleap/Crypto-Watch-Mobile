@@ -10,8 +10,6 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double widthSize = MediaQuery.of(context).size.width;
-    double heightSize = MediaQuery.of(context).size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Background2,

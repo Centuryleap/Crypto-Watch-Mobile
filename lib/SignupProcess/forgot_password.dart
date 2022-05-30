@@ -82,8 +82,10 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                       child: GestureDetector(
                         child: Text(
                           'Back to login',
-                          style:
-                          BodyText2.copyWith(color: Primary3),
+                          style: BodyText2.copyWith(
+                            color: Primary3,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                         onTap: () {
                           Navigator.of(context).push(
