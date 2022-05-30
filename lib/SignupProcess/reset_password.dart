@@ -1,6 +1,7 @@
+import 'package:cryptowatch/SignupProcess/sign_in_screen.dart';
 import 'package:cryptowatch/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({Key? key}) : super(key: key);
@@ -11,76 +12,66 @@ class ResetPassword extends StatelessWidget {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
-          padding: EdgeInsets.only(left: 24, right: 24, top: 78),
+          padding: EdgeInsets.only(left: 24, right: 24, top: 132),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Icon(
-                    CupertinoIcons.arrow_left,
-                    size: 16,
-                  )),
+              SvgPicture.asset('assets/images/cryptowatch_logo_blue.svg'),
               SizedBox(
-                height: 30,
+                height: 36,
               ),
-              Text(
-                'Reset Password',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.w500,
-                ),
+              Text('Reset Password', style: Header1.copyWith(color: Text1)),
+              SizedBox(
+                height: 10,
               ),
+              Text('Create a new passsword to sign in\nto your account',
+                  textAlign: TextAlign.center,
+                  style: BodyText1.copyWith(color: Text3)),
               SizedBox(height: 83),
               TextFormField(
-                keyboardType: TextInputType.name,
-                obscureText: true,
+                keyboardType: TextInputType.visiblePassword,
                 decoration: InputDecoration(
+                  fillColor: Background1,
+                  hintText: 'New Password',
+                  hintStyle: BodyText1.copyWith(color: Text3),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none,
                   ),
-                  labelText: 'New Password',
-                  labelStyle:
-                      TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                  
                 ),
-                style: TextStyle(fontSize: 14),
               ),
-              SizedBox(height: 24,),
+              SizedBox(
+                height: 24,
+              ),
               TextFormField(
-                keyboardType: TextInputType.name,
-                obscureText: true,
+                keyboardType: TextInputType.visiblePassword,
                 decoration: InputDecoration(
+                  fillColor: Background1,
+                  hintText: 'Confirm Password',
+                  hintStyle: BodyText1.copyWith(color: Text3),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none,
                   ),
-                  labelText: ' Confirm Password',
-                  labelStyle:
-                      TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                  
                 ),
-                style: TextStyle(fontSize: 14),
               ),
-              SizedBox(height: 48,),
+              SizedBox(
+                height: 48,
+              ),
               MaterialButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                color: PrimaryBlue,
                 onPressed: () {
-
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: ((context) => SignInScreen()),
+                    ),
+                  );
                 },
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16)),
+                color: Primary2,
                 minWidth: double.infinity,
-                padding: EdgeInsets.symmetric(
-                  vertical: 22,
-                ),
+                padding: EdgeInsets.symmetric(vertical: 20),
                 child: Text(
-                  'Done',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600),
+                  'Continue to login',
+                  style: BodyText1.copyWith(color: Colors.white),
                 ),
               ),
             ],
