@@ -1,10 +1,9 @@
-import 'package:cryptowatch/coingeckomodels/cg_chart_data.dart';
-import 'package:cryptowatch/coingeckomodels/cg_data_model.dart';
-import 'package:cryptowatch/constants.dart';
-import 'package:cryptowatch/models/data_model.dart';
-import 'package:cryptowatch/provider/crypto_pro.dart';
-import 'package:cryptowatch/widgets/coin_volume_24h_card.dart';
-import 'package:cryptowatch/widgets/toggle_button.dart';
+import 'package:cryptowatch/app/app_constants.dart';
+import 'package:cryptowatch/core/coingeckomodels/cg_chart_data.dart';
+import 'package:cryptowatch/core/coingeckomodels/cg_data_model.dart';
+import 'package:cryptowatch/core/provider/crypto_pro.dart';
+import 'package:cryptowatch/presentation/components/widgets/coin_volume_24h_card.dart';
+import 'package:cryptowatch/presentation/components/widgets/toggle_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -380,9 +379,9 @@ class _CoinDetailScreenState extends State<CoinDetailScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 58,),
-
-              
+              SizedBox(
+                height: 58,
+              ),
               Container(),
             ],
           ),
@@ -399,7 +398,6 @@ class _CoinDetailScreenState extends State<CoinDetailScreen> {
       id: widget.coin.id,
       vsCurrency: 'usd',
       days: 1,
-      
     );
 
     result.data.forEach((element) {

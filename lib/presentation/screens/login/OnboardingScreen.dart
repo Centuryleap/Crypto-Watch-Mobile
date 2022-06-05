@@ -1,5 +1,5 @@
-import 'package:cryptowatch/SignupProcess/sign_up_screen.dart';
-import 'package:cryptowatch/constants.dart';
+import 'package:cryptowatch/app/app_constants.dart';
+import 'package:cryptowatch/presentation/screens/login/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -50,12 +50,22 @@ class OnboardingScreen extends StatelessWidget {
               children: [
                 MaterialButton(
                   color: PrimaryBlue,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
                   onPressed: () {
-                    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=> SignUpScreen()), (route) => false);
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (context) => SignUpScreen()),
+                        (route) => false);
                   },
                   padding: EdgeInsets.symmetric(vertical: 14, horizontal: 22),
-                  child: Text('Get Started', style: TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'SF-Pro',fontWeight: FontWeight.w800),),
+                  child: Text(
+                    'Get Started',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontFamily: 'SF-Pro',
+                        fontWeight: FontWeight.w800),
+                  ),
                 ),
               ],
             )
@@ -65,4 +75,3 @@ class OnboardingScreen extends StatelessWidget {
     );
   }
 }
-   

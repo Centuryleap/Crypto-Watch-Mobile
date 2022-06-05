@@ -1,10 +1,9 @@
-import 'package:cryptowatch/OtherScreens/BottomNavigationScreen.dart';
-import 'package:cryptowatch/SignupProcess/forgot_password.dart';
+import 'package:cryptowatch/app/app_constants.dart';
+import 'package:cryptowatch/presentation/screens/bottom_navigation_screen.dart';
+import 'package:cryptowatch/presentation/screens/login/forgot_password.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../constants.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -23,26 +22,28 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            Text(
-                  'Welcome',
-                  style: TextStyle( fontWeight: FontWeight.w600, fontSize: 16, color: Black6,),
+              Text(
+                'Welcome',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16,
+                  color: Black6,
                 ),
-                SizedBox(
-                  height: 10,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'Login',
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 32,
+                  color: Colors.black,
                 ),
-                Text(
-                  'Login',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 32,
-                    color: Colors.black,
-                  ),
-                ),
+              ),
               SizedBox(
                 height: 65,
               ),
-              
-              
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
@@ -83,16 +84,28 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 35,
               ),
-              GestureDetector(onTap: (){
-               Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForgetPasswordScreen() ));
-              },  child: Text('Forgot Password?', style: TextStyle(color: PrimaryBlu2e, fontWeight: FontWeight.w400, fontSize: 16),)),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => ForgetPasswordScreen()));
+                  },
+                  child: Text(
+                    'Forgot Password?',
+                    style: TextStyle(
+                        color: PrimaryBlu2e,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16),
+                  )),
               SizedBox(height: 40),
               MaterialButton(
-                 shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
-                        color: PrimaryBlue,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: PrimaryBlue,
                 onPressed: () {
-                   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => BottomNavigationScreen())  , (route) => false);
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                          builder: (context) => BottomNavigationScreen()),
+                      (route) => false);
                 },
                 padding: EdgeInsets.symmetric(vertical: 22),
                 minWidth: double.infinity,
@@ -104,9 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       fontWeight: FontWeight.w600),
                 ),
               ),
-
               SizedBox(height: 32),
-
               Container(
                 alignment: Alignment.center,
                 child: RichText(
@@ -119,14 +130,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontWeight: FontWeight.w400),
                       children: <TextSpan>[
                         TextSpan(
-                            text: 'Sign me Up', style: TextStyle(color: PrimaryBlue), recognizer: TapGestureRecognizer()..onTap = (){ 
-                     //          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=> SignInScreen()),(route) => false) ;
-                            }),
-                        
+                            text: 'Sign me Up',
+                            style: TextStyle(color: PrimaryBlue),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                //          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=> SignInScreen()),(route) => false) ;
+                              }),
                       ]),
                 ),
               ),
-
             ],
           ),
         ),

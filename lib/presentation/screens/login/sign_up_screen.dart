@@ -1,8 +1,8 @@
-import 'package:cryptowatch/OtherScreens/home_screen.dart';
-import 'package:cryptowatch/SignupProcess/sign_in_screen.dart';
+import 'package:cryptowatch/presentation/screens/home_screen.dart';
+import 'package:cryptowatch/presentation/screens/login/sign_in_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:cryptowatch/constants.dart';
+import 'package:cryptowatch/app/app_constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SignUpScreen extends StatelessWidget {

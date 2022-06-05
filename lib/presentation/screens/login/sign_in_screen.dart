@@ -1,12 +1,11 @@
-import 'package:cryptowatch/SignupProcess/forgot_password.dart';
-import 'package:cryptowatch/SignupProcess/login_screen.dart';
-import 'package:cryptowatch/SignupProcess/sign_up_screen.dart';
+import 'package:cryptowatch/app/app_constants.dart';
+import 'package:cryptowatch/presentation/screens/bottom_navigation_screen.dart';
+import 'package:cryptowatch/presentation/screens/login/forgot_password.dart';
+import 'package:cryptowatch/presentation/screens/login/sign_up_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../constants.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -87,7 +86,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   MaterialButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: ((context) => SignInScreen())));
+                          builder: ((context) => BottomNavigationScreen())));
                     },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16)),

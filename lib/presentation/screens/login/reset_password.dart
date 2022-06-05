@@ -1,25 +1,17 @@
-import 'package:cryptowatch/SignupProcess/enter_otp.dart';
+import 'package:cryptowatch/app/app_constants.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import '../constants.dart';
-
-class ForgetPasswordScreen extends StatefulWidget {
-  @override
-  State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
-}
-
-class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
-
+class ResetPassword extends StatelessWidget {
+  const ResetPassword({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Padding(
-          padding: EdgeInsets.only(left: 24, right: 24, top: 77),
+          padding: EdgeInsets.only(left: 24, right: 24, top: 78),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -27,57 +19,70 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   onTap: () {
                     Navigator.of(context).pop();
                   },
-                  child: Icon(CupertinoIcons.arrow_left, size: 16,)),
-              SizedBox(height: 30,),
+                  child: Icon(
+                    CupertinoIcons.arrow_left,
+                    size: 16,
+                  )),
+              SizedBox(
+                height: 30,
+              ),
               Text(
-                'Forgot Password',
+                'Reset Password',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.w500,
-                  
                 ),
               ),
-              SizedBox(height: 12),
-              Text('Input the email address you signed up with', style: TextStyle(color: Color(0xff666666), fontWeight: FontWeight.w400),),
               SizedBox(height: 83),
               TextFormField(
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.name,
+                obscureText: true,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  labelText: 'Email Address',
+                  labelText: 'New Password',
                   labelStyle:
                       TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  
                 ),
                 style: TextStyle(fontSize: 14),
               ),
-              SizedBox(height: 48),
-              
-             
+              SizedBox(height: 24,),
+              TextFormField(
+                keyboardType: TextInputType.name,
+                obscureText: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  labelText: ' Confirm Password',
+                  labelStyle:
+                      TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  
+                ),
+                style: TextStyle(fontSize: 14),
+              ),
+              SizedBox(height: 48,),
               MaterialButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
                 color: PrimaryBlue,
                 onPressed: () {
-                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => OTPScreen())  );
+
                 },
                 minWidth: double.infinity,
                 padding: EdgeInsets.symmetric(
                   vertical: 22,
                 ),
                 child: Text(
-                  'Continue',
+                  'Done',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.w600),
                 ),
               ),
-
-              
-              
-              
             ],
           ),
         ),

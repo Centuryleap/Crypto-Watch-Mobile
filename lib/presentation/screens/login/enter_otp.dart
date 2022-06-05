@@ -1,7 +1,6 @@
 import 'dart:async';
-
-import 'package:cryptowatch/SignupProcess/reset_password.dart';
-import 'package:cryptowatch/constants.dart';
+import 'package:cryptowatch/app/app_constants.dart';
+import 'package:cryptowatch/presentation/screens/login/reset_password.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -51,7 +50,7 @@ class _OTPScreenState extends State<OTPScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-       scrollDirection: Axis.vertical,
+        scrollDirection: Axis.vertical,
         child: Padding(
           padding: EdgeInsets.only(left: 24, right: 24, top: 78),
           child: Column(
@@ -81,7 +80,6 @@ class _OTPScreenState extends State<OTPScreen> {
               Text(
                 'Input the code sent to your email',
                 style: TextStyle(
-                  
                   fontWeight: FontWeight.w400,
                 ),
               ),
@@ -97,7 +95,6 @@ class _OTPScreenState extends State<OTPScreen> {
                         color: Color(0xffd2d2d2),
                       ),
                       borderRadius: BorderRadius.circular(12)),
-                  
                   padding:
                       EdgeInsets.only(left: 60, right: 60, top: 15, bottom: 5),
                   child: PinCodeTextField(
@@ -108,10 +105,10 @@ class _OTPScreenState extends State<OTPScreen> {
                     ),
                     length: 6,
                     obscureText: true,
-      
+
                     blinkWhenObscuring: true,
                     animationType: AnimationType.fade,
-      
+
                     pinTheme: PinTheme(
                       fieldWidth: 18,
                       fieldHeight: 28,
@@ -125,11 +122,11 @@ class _OTPScreenState extends State<OTPScreen> {
                     errorAnimationController: errorController,
                     controller: textEditingController,
                     keyboardType: TextInputType.number,
-      
+
                     onCompleted: (v) {
                       print("Completed");
                     },
-      
+
                     onChanged: (value) {
                       print(value);
                       setState(() {
@@ -153,45 +150,47 @@ class _OTPScreenState extends State<OTPScreen> {
                 style:
                     TextStyle(color: PrimaryBlu2e, fontWeight: FontWeight.w400),
               ),
-              SizedBox(height: 48,),
+              SizedBox(
+                height: 48,
+              ),
               MaterialButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
-                  color: PrimaryBlue,
-                  onPressed: () {
-                    formKey.currentState!.validate();
-                      // conditions for validating
-                      if (currentText.length != 6) {
-                        errorController!.add(ErrorAnimationType
-                            .shake); // Triggering error shake animation
-                        setState(() => hasError = true);
-                      } else {
-                        setState(
-                          () {
-                            hasError = false;
-                            snackBar("OTP Verified!!");
-                          },
-                        );
-                      }
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResetPassword() ) );
-                  },
-                  minWidth: double.infinity,
-                  padding: EdgeInsets.symmetric(
-                    vertical: 22,
-                  ),
-                  child: Text(
-                    'Continue',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600),
-                  ),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: PrimaryBlue,
+                onPressed: () {
+                  formKey.currentState!.validate();
+                  // conditions for validating
+                  if (currentText.length != 6) {
+                    errorController!.add(ErrorAnimationType
+                        .shake); // Triggering error shake animation
+                    setState(() => hasError = true);
+                  } else {
+                    setState(
+                      () {
+                        hasError = false;
+                        snackBar("OTP Verified!!");
+                      },
+                    );
+                  }
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => ResetPassword()));
+                },
+                minWidth: double.infinity,
+                padding: EdgeInsets.symmetric(
+                  vertical: 22,
                 ),
+                child: Text(
+                  'Continue',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
   }
-           
 }

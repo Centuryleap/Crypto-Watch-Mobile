@@ -1,8 +1,6 @@
-import 'package:cryptowatch/FirebaseApi/firebase_api.dart';
-import 'package:cryptowatch/coingeckomodels/cg_data_model.dart';
-import 'package:cryptowatch/coingeckomodels/cg_list_coins.dart';
-import 'package:cryptowatch/models/big_data_models.dart';
-import 'package:cryptowatch/models/data_model.dart';
+import 'package:cryptowatch/core/FirebaseApi/firebase_api.dart';
+import 'package:cryptowatch/core/coingeckomodels/cg_data_model.dart';
+import 'package:cryptowatch/core/coingeckomodels/cg_list_coins.dart';
 import 'package:flutter/cupertino.dart';
 
 class CryptoProviders extends ChangeNotifier {
