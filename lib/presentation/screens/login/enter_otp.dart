@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:cryptowatch/SignupProcess/reset_password.dart';
-import 'package:cryptowatch/constants.dart';
+import 'package:cryptowatch/app/app_constants.dart';
+import 'package:cryptowatch/presentation/screens/login/reset_password.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -150,7 +150,7 @@ class _OTPScreenState extends State<OTPScreen> {
                       MaterialPageRoute(
                         builder: ((context) => ResetPassword()),
                       ),
-                    );     
+                    );
                   },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16)),

@@ -1,9 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cryptowatch/OtherScreens/all_coins_screens.dart';
-import 'package:cryptowatch/OtherScreens/coin_detail_screen.dart';
-import 'package:cryptowatch/coingeckomodels/cg_list_coins.dart';
-import 'package:cryptowatch/models/big_data_models.dart';
-import 'package:cryptowatch/provider/crypto_pro.dart';
+import 'package:cryptowatch/core/coingeckomodels/cg_list_coins.dart';
+import 'package:cryptowatch/core/provider/crypto_pro.dart';
+import 'package:cryptowatch/presentation/screens/all_coins_screens.dart';
+import 'package:cryptowatch/presentation/screens/coin_detail_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

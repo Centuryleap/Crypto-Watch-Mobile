@@ -1,5 +1,5 @@
-import 'package:cryptowatch/SignupProcess/splash_screen.dart';
-import 'package:cryptowatch/provider/crypto_pro.dart';
+import 'package:cryptowatch/app/app_routes.dart';
+import 'package:cryptowatch/core/provider/crypto_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +23,9 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Argentum-Sans',
           primarySwatch: Colors.blue,
         ),
-        home: SplashScreen(),
+        onGenerateTitle: (context) => 'Crypto Watch Mobile',
+        initialRoute: AppRoutes.splashScreen,
+        onGenerateRoute: AppRoutes.routes,
       ),
     );
   }

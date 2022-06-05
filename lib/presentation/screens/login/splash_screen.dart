@@ -1,6 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:cryptowatch/SignupProcess/sign_up_screen.dart';
-import 'package:cryptowatch/constants.dart';
+import 'package:cryptowatch/presentation/screens/login/sign_up_screen.dart';
+import 'package:cryptowatch/app/app_constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:page_transition/page_transition.dart';
@@ -15,7 +15,7 @@ class SplashScreen extends StatelessWidget {
       splash: SvgPicture.asset('assets/images/cryptowatch_logo_white.svg'),
       backgroundColor: Primary1,
       nextScreen: SignUpScreen(),
-      duration: 1000 ,
+      duration: 1000,
       splashTransition: SplashTransition.scaleTransition,
       pageTransitionType: PageTransitionType.fade,
       animationDuration: Duration(seconds: 2),

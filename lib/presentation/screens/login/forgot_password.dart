@@ -1,12 +1,8 @@
-import 'package:cryptowatch/SignupProcess/sign_in_screen.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
+import 'package:cryptowatch/app/app_constants.dart';
+import 'package:cryptowatch/presentation/screens/login/enter_otp.dart';
+import 'package:cryptowatch/presentation/screens/login/sign_in_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:cryptowatch/SignupProcess/enter_otp.dart';
-
-import '../constants.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {
   @override

@@ -1,5 +1,5 @@
-import 'package:cryptowatch/provider/crypto_pro.dart';
-import 'package:cryptowatch/widgets/coin_list_widget.dart';
+import 'package:cryptowatch/core/provider/crypto_pro.dart';
+import 'package:cryptowatch/presentation/components/widgets/coin_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

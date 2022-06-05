@@ -1,9 +1,9 @@
-import 'package:cryptowatch/OtherScreens/all_coins_screens.dart';
-import 'package:cryptowatch/coingeckomodels/cg_list_coins.dart';
-import 'package:cryptowatch/constants.dart';
-import 'package:cryptowatch/provider/crypto_pro.dart';
-import 'package:cryptowatch/repository/repository.dart';
-import 'package:cryptowatch/widgets/coin_list_widget.dart';
+import 'package:cryptowatch/core/coingeckomodels/cg_list_coins.dart';
+import 'package:cryptowatch/core/provider/crypto_pro.dart';
+import 'package:cryptowatch/core/repository/repository.dart';
+import 'package:cryptowatch/presentation/screens/all_coins_screens.dart';
+import 'package:cryptowatch/app/app_constants.dart';
+import 'package:cryptowatch/presentation/components/widgets/coin_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-   
     final provider = Provider.of<CryptoProviders>(context, listen: false);
     provider.setFutureCoins = futureCoins;
     final allStringId = provider.allStrings;
