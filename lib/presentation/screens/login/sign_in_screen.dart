@@ -72,12 +72,13 @@ class _SignInScreenState extends State<SignInScreen> {
                       alignment: Alignment.bottomRight,
                       child: GestureDetector(
                         onTap: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) => ForgetPasswordScreen())),
+                          MaterialPageRoute(
+                              builder: (context) => ForgetPasswordScreen()),
+                        ),
                         child: Text(
-                          "Forget password?",
+                          "Forgot password?",
                           style:
-                              TextStyle(color: Color(0XFF6888F8), fontSize: 12),
+                              TextStyle(color: Color(0XFF6888F8), fontSize: 12,),
                         ),
                       )),
                   SizedBox(

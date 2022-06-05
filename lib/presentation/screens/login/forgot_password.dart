@@ -1,9 +1,8 @@
 import 'package:cryptowatch/app/app_constants.dart';
 import 'package:cryptowatch/presentation/screens/login/enter_otp.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
+import 'package:cryptowatch/presentation/screens/login/sign_in_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {
   @override
@@ -14,72 +13,88 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(left: 24, right: 24, top: 77),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Icon(
-                    CupertinoIcons.arrow_left,
-                    size: 16,
-                  )),
-              SizedBox(
-                height: 30,
-              ),
-              Text(
-                'Forgot Password',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              SizedBox(height: 12),
-              Text(
-                'Input the email address you signed up with',
-                style: TextStyle(
-                    color: Color(0xff666666), fontWeight: FontWeight.w400),
-              ),
-              SizedBox(height: 83),
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  labelText: 'Email Address',
-                  labelStyle:
-                      TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                ),
-                style: TextStyle(fontSize: 14),
-              ),
-              SizedBox(height: 48),
-              MaterialButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                color: PrimaryBlue,
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => OTPScreen()));
-                },
-                minWidth: double.infinity,
-                padding: EdgeInsets.symmetric(
-                  vertical: 22,
-                ),
-                child: Text(
-                  'Continue',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600),
-                ),
-              ),
-            ],
-          ),
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Background2,
+      body: Padding(
+        padding: const EdgeInsets.only(left: 24, right: 24, top: 132),
+        child: Builder(
+          builder: (context) {
+            return Container(
+              alignment: Alignment.center,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset('assets/images/cryptowatch_logo_blue.svg'),
+                    SizedBox(
+                      height: 36,
+                    ),
+                    Text('Forgot Password',
+                        style: Header1.copyWith(color: Text1)),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Text('Enter the email you signed up with',
+                        textAlign: TextAlign.center,
+                        style: BodyText1.copyWith(color: Text3)),
+                    SizedBox(
+                      height: 56,
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        fillColor: Background1,
+                        hintText: 'Email address',
+                        hintStyle: BodyText1.copyWith(color: Text3),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 48,
+                    ),
+                    MaterialButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: ((context) => OTPScreen()),
+                          ),
+                        );
+                      },
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16)),
+                      color: Primary2,
+                      minWidth: double.infinity,
+                      padding: EdgeInsets.symmetric(vertical: 20),
+                      child: Text(
+                        'Submit',
+                        style: BodyText1.copyWith(color: Colors.white),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 32,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: GestureDetector(
+                        child: Text(
+                          'Back to login',
+                          style: BodyText2.copyWith(
+                            color: Primary3,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: ((context) => SignInScreen()),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ]),
+            );
+          },
         ),
       ),
     );
