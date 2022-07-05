@@ -4,7 +4,6 @@ import 'package:cryptowatch/presentation/screens/login/forgot_password.dart';
 import 'package:cryptowatch/presentation/screens/login/sign_up_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -13,7 +12,7 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  bool _obscureText = true;
+  
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cryptowatch/core/coingeckomodels/cg_list_coins.dart';
 import 'package:cryptowatch/core/provider/crypto_pro.dart';
-import 'package:cryptowatch/presentation/screens/all_coins_screens.dart';
 import 'package:cryptowatch/presentation/screens/coin_detail_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconly/iconly.dart';
@@ -19,7 +17,7 @@ class CoinListWidget extends StatelessWidget {
       {Key? key,
       required this.futureCoins,
       required this.required_height,
-      required this.required_list})
+      required this.required_list}) 
       : super(key: key);
 
   @override

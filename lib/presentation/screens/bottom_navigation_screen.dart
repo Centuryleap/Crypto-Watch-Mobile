@@ -1,4 +1,4 @@
-import 'package:cryptowatch/presentation/screens/setting_screen.dart';
+import 'package:cryptowatch/presentation/screens/account/settings_screen.dart';
 import 'package:cryptowatch/presentation/screens/watchlist_screen.dart';
 import 'package:cryptowatch/app/app_constants.dart';
 import 'package:cryptowatch/presentation/screens/home_screen.dart';
@@ -19,7 +19,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
     HomeScreen(),
     WatchlistScreen(),
     Text('Third'),
-    SettingScreen()
+    SettingsScreen(),
   ];
   int _selectedIndex = 0;
 

@@ -3,7 +3,6 @@ import 'package:cryptowatch/presentation/screens/bottom_navigation_screen.dart';
 import 'package:cryptowatch/presentation/screens/login/forgot_password.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
