@@ -1,4 +1,3 @@
-import 'package:cryptowatch/presentation/screens/home_screen.dart';
 import 'package:cryptowatch/presentation/screens/login/sign_in_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

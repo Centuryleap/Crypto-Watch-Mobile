@@ -2,8 +2,10 @@ import 'package:cryptowatch/app/app_routes.dart';
 import 'package:cryptowatch/core/provider/crypto_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+void main()  async {
+  await ScreenUtil.ensureScreenSize();
   runApp(const MyApp());
 }
 
@@ -16,16 +18,23 @@ class MyApp extends StatelessWidget {
     precacheImage(AssetImage('assets/images/spaceship_man.png'), context);
     return ChangeNotifierProvider(
       create: (BuildContext context) => CryptoProviders(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          fontFamily: 'Argentum-Sans',
-          primarySwatch: Colors.blue,
-        ),
-        onGenerateTitle: (context) => 'Crypto Watch Mobile',
-        initialRoute: AppRoutes.splashScreen,
-        onGenerateRoute: AppRoutes.routes,
+      child: ScreenUtilInit(
+        designSize: const Size(390, 900),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (BuildContext context, Widget? child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            theme: ThemeData(
+              fontFamily: 'Argentum-Sans',
+              primarySwatch: Colors.blue,
+            ),
+            onGenerateTitle: (context) => 'Crypto Watch Mobile',
+            initialRoute: AppRoutes.splashScreen,
+            onGenerateRoute: AppRoutes.routes,
+          );
+        },
       ),
     );
   }

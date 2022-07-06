@@ -1,9 +1,11 @@
-import 'package:cryptowatch/presentation/screens/setting_screen.dart';
+import 'package:cryptowatch/presentation/screens/account/settings_screen.dart';
 import 'package:cryptowatch/presentation/screens/watchlist_screen.dart';
-import 'package:cryptowatch/app/app_constants.dart';
 import 'package:cryptowatch/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'home_screen.dart';
 
@@ -11,63 +13,123 @@ class BottomNavigationScreen extends StatefulWidget {
   const BottomNavigationScreen({Key? key}) : super(key: key);
 
   @override
-  _BottomNavigationScreenState createState() => _BottomNavigationScreenState();
+  State<BottomNavigationScreen> createState() => _BottomNavigationScreenState();
 }
 
 class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
-  List<Widget> _screens = [
+  var currentIndex = 0;
+  final pages = [
     HomeScreen(),
     WatchlistScreen(),
     Text('Third'),
-    SettingScreen()
+    SettingsScreen(),
   ];
-  int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      currentIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        showUnselectedLabels: true,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            label: 'Home',
-            icon: Icon(
-              _selectedIndex == 0 ? IconlyBold.home : IconlyLight.home,
+      body: pages[currentIndex],
+      bottomNavigationBar: SizedBox(
+        height: 80.h,
+        child: BottomNavigationBar(
+          currentIndex: currentIndex,
+          showUnselectedLabels: true,
+          backgroundColor: const Color(0xffFFFFFF),
+          unselectedItemColor: const Color(0xff888C99),
+          selectedItemColor: const Color(0xff072692),
+          iconSize: 25.sp,
+          selectedFontSize: 15.sp,
+          unselectedFontSize: 12.sp,
+          type: BottomNavigationBarType.fixed,
+          onTap: _onItemTapped,
+          items: [
+            BottomNavigationBarItem(
+              label: 'Home',
+              icon: Padding(
+                padding:  EdgeInsets.only(
+                  bottom: 7.w,
+                ),
+                child: Icon(
+                  IconlyLight.home,
+                ),
+              ),
+              activeIcon: Padding(
+                padding:  EdgeInsets.only(bottom: 7.w,),
+                child: Icon(
+                  IconlyBold.home,
+                  color: const Color(0xff072692),
+                ),
+              ),
             ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Watchlist',
-            icon: Icon(
-              _selectedIndex == 1 ? IconlyBold.bookmark : IconlyLight.bookmark,
+            BottomNavigationBarItem(
+              label: 'Watchlist',
+              icon: Padding(
+                padding: EdgeInsets.only(
+                  bottom: 7.w,
+                ),
+                child: Icon(
+                  Iconsax.star,
+                ),
+              ),
+              activeIcon: Padding(
+                padding:  EdgeInsets.only(
+                  bottom: 7.w,
+                ),
+                child: SvgPicture.asset(
+                  'assets/images/star.svg',
+                ),
+              ),
             ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Notification',
-            icon: Icon(
-              _selectedIndex == 2
-                  ? IconlyBold.notification
-                  : IconlyLight.notification,
+            BottomNavigationBarItem(
+              label: 'Notification',
+              icon: Padding(
+                padding:  EdgeInsets.only(
+                  bottom: 7.w,
+                ),
+                child: Icon(
+                  Iconsax.notification_circle,
+                ),
+              ),
+              activeIcon: Padding(
+                padding:  EdgeInsets.only(
+                  bottom: 7.w,
+                ),
+                child: Image.asset(
+                  'assets/images/notification.png',
+                ),
+              ),
             ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Settings',
-            icon: Icon(
-              _selectedIndex == 3 ? IconlyBold.setting : IconlyLight.setting,
+            BottomNavigationBarItem(
+              label: 'Settings',
+              icon: Padding(
+                padding:  EdgeInsets.only(
+                  bottom: 7.w,
+                ),
+                child: Icon(
+                  IconlyLight.setting,
+                ),
+              ),
+              activeIcon: Padding(
+                padding:  EdgeInsets.only(
+                  bottom: 7.w,
+                ),
+                child: Icon(
+                  IconlyBold.setting,
+                  color: Color(0xff072692),
+                ),
+              ),
             ),
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: BlueDefault,
-        unselectedItemColor: Color(0xff999999),
-        onTap: _onItemTapped,
+          ],
+        ),
       ),
     );
   }
 }
+
+
