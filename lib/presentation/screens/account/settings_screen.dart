@@ -71,24 +71,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       SizedBox(
                         height: 15.h,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Iconsax.wallet_3,
-                            size: 20.sp,
-                            color: const Color(0xff072692),
-                          ),
-                          SizedBox(width: 11.w),
-                          Text(
-                            'Connect Wallet',
-                            style: TextStyle(
+                      GestureDetector(
+                        
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Iconsax.wallet_3,
+                              size: 20.sp,
                               color: const Color(0xff072692),
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14.sp,
                             ),
-                          ),
-                        ],
+                            SizedBox(width: 11.w),
+                            Text(
+                              'Connect Wallet',
+                              style: TextStyle(
+                                color: const Color(0xff072692),
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14.sp,
+                              ),
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   ),
