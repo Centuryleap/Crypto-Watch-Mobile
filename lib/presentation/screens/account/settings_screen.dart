@@ -72,7 +72,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         height: 15.h,
                       ),
                       GestureDetector(
-                        
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) => buildSheet(context),
+                          );
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -177,4 +182,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
+
+  Widget buildSheet(BuildContext context) => DraggableScrollableSheet(
+  builder: (_, controller)  => Container()
+  );
 }
