@@ -74,6 +74,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       GestureDetector(
                         onTap: () {
                           showModalBottomSheet(
+                            isScrollControlled: true,
+                            isDismissible: true,
+                            backgroundColor: Colors.transparent,
                             context: context,
                             builder: (context) => buildSheet(context),
                           );
@@ -184,6 +187,52 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Widget buildSheet(BuildContext context) => DraggableScrollableSheet(
-  builder: (_, controller)  => Container()
-  );
+        builder: (_, controller) => Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(32.r),
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 32.h,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: const Color(0xffDBDCDF),
+                  borderRadius: BorderRadius.circular(20.r),
+                ),
+                height: 6.h,
+                width: 48.w,
+              ),
+              SizedBox(
+                height: 24.h,
+              ),
+              Text('Connect wallet',
+              style: TextStyle(
+                color: const Color(0xff01071D),
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w600,
+              ),
+              ),
+              SizedBox(height: 4.h,),
+              Text('Securely store your cryptocurrency.\nConnect to one of the following wallets ',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: const Color(0xff888C99),
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w400,
+              )
+              ),
+              SizedBox(
+                height: 54.h,
+              ),
+            ],
+          ),
+        ),
+      );
 }
