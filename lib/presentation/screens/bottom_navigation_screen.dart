@@ -1,3 +1,4 @@
+import 'package:cryptowatch/core/repository/repository.dart';
 import 'package:cryptowatch/presentation/screens/account/settings_screen.dart';
 import 'package:cryptowatch/presentation/screens/watchlist_screen.dart';
 import 'package:cryptowatch/presentation/screens/home_screen.dart';
@@ -17,13 +18,9 @@ class BottomNavigationScreen extends StatefulWidget {
 }
 
 class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
+  
   var currentIndex = 0;
-  final pages = [
-    HomeScreen(),
-    WatchlistScreen(),
-    Text('Third'),
-    SettingsScreen(),
-  ];
+  Repository repository = Repository();
 
   void _onItemTapped(int index) {
     setState(() {
@@ -33,8 +30,17 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final pages = [
+    HomeScreen(repository: repository),
+    WatchlistScreen( repository: repository,),
+    Text('Third'),
+    SettingsScreen(),
+  ];
     return Scaffold(
-      body: pages[currentIndex],
+      body: IndexedStack(
+        index: currentIndex,
+        children: pages,
+      ),
       bottomNavigationBar: SizedBox(
         height: 80.h,
         child: BottomNavigationBar(

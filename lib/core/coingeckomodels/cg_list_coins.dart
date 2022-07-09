@@ -1,6 +1,11 @@
 import 'package:cryptowatch/core/coingeckomodels/cg_data_model.dart';
+import 'package:hive/hive.dart';
 
+part 'cg_list_coins.g.dart';
+
+@HiveType(typeId: 1)
 class CoinGeckoList {
+  @HiveField(0)
   List<CoinGeckoDataModel> cg_dataModel;
 
   CoinGeckoList({

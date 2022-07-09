@@ -1,11 +1,14 @@
 import 'package:cryptowatch/core/coingeckomodels/cg_list_coins.dart';
+import 'package:cryptowatch/core/repository/repository.dart';
 import 'package:cryptowatch/presentation/components/widgets/coin_list_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
 class AllCoins extends StatelessWidget {
-  const AllCoins(this.futureCoins, this.required_list, {Key? key})
+  final Repository repository;
+  const AllCoins(this.repository, this.futureCoins, this.required_list,
+      {Key? key})
       : super(key: key);
   final Future<CoinGeckoList> futureCoins;
   final List<String> required_list;
@@ -39,7 +42,7 @@ class AllCoins extends StatelessWidget {
               ],
             ),
             CoinListWidget(
-              futureCoins: futureCoins,
+              repository: repository,
               required_height: all_coins_height,
               required_list: required_list,
             )

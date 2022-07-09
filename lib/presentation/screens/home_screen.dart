@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final Repository repository;
+  const HomeScreen({required this.repository, Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -22,7 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO: implement initState
     repository = Repository();
     futureCoins = repository.getCoins();
-
     super.initState();
   }
 
@@ -33,66 +33,76 @@ class _HomeScreenState extends State<HomeScreen> {
     final allStringId = provider.allStrings;
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Padding(
-            padding: EdgeInsets.only(
-              top: 84,
-              left: 24,
-              right: 24,
-            ),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'My Watchlist',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Text('View all',
+      body: RefreshIndicator(
+        onRefresh: () async {
+          setState(() {
+            widget.repository.updateCoins();
+          });
+        },
+        child: SingleChildScrollView(
+          child: Padding(
+              padding: EdgeInsets.only(
+                top: 84,
+                left: 24,
+                right: 24,
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'My Watchlist',
                         style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            color: PrimaryBlue,
-                            fontSize: 16))
-                  ],
-                ),
-                SizedBox(
-                  height: 218,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'All Coins',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) =>
-                                AllCoins(futureCoins, allStringId)));
-                      },
-                      child: Text('View all',
+                      Text('View all',
                           style: TextStyle(
                               fontWeight: FontWeight.w400,
                               color: PrimaryBlue,
-                              fontSize: 16)),
-                    )
-                  ],
-                ),
-                CoinListWidget(
-                  futureCoins: futureCoins,
-                  required_height: MediaQuery.of(context).size.height * 0.4905,
-                  required_list: allStringId,
-                ),
-              ],
-            )),
+                              fontSize: 16))
+                    ],
+                  ),
+                  SizedBox(
+                    height: 218,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'All Coins',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          print(repository
+                              .coinGeckoList!.cg_dataModel.first.current_price);
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => AllCoins(widget.repository,
+                                  futureCoins, allStringId)));
+                        },
+                        child: Text('View all',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                color: PrimaryBlue,
+                                fontSize: 16)),
+                      )
+                    ],
+                  ),
+                  CoinListWidget(
+                    repository: widget.repository,
+                    required_height:
+                        MediaQuery.of(context).size.height * 0.4905,
+                    required_list: allStringId,
+                  ),
+                ],
+              )),
+        ),
       ),
     );
   }
