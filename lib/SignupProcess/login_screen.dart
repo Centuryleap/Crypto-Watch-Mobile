@@ -92,7 +92,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(12)),
                         color: PrimaryBlue,
                 onPressed: () {
-                   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => BottomNavigationScreen())  , (route) => false);
+                   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => 
+                   BottomNavigationScreen())  , (route) => false);
                 },
                 padding: EdgeInsets.symmetric(vertical: 22),
                 minWidth: double.infinity,
