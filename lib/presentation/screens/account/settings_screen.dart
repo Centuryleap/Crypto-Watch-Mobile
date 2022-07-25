@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../app/app_routes.dart';
+
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
@@ -109,9 +111,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 SizedBox(
                   height: 12.h,
                 ),
-                ContainerListWidget(
-                  title: 'Change Password',
-                  icon: Iconsax.lock,
+                GestureDetector(
+                  onTap: () =>
+                      Navigator.of(context).pushNamed(AppRoutes.changePassword),
+                  child: ContainerListWidget(
+                    title: 'Change Password',
+                    icon: Iconsax.lock,
+                  ),
                 ),
                 SizedBox(
                   height: 8.h,
@@ -152,6 +158,4 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
-
-  
 }
