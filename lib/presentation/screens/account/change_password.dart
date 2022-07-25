@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../app/app_constants.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({Key? key}) : super(key: key);
@@ -10,6 +12,12 @@ class ChangePasswordScreen extends StatefulWidget {
 }
 
 class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
+  final TextEditingController _oldPasswordController = TextEditingController();
+  final TextEditingController _newPasswordController = TextEditingController();
+
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,19 +33,19 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: Icon(
-                    Iconsax.arrow_left,
-                    size: 20.w,
-                    color: const Color(0xff010923),
-                  ),
-                ),
+                    onTap: () => Navigator.pop(context),
+                    child: SvgPicture.asset(
+                      'assets/images/left_arrow.svg',
+                      width: 14.w,
+                      height: 16.h,
+                      color: Color(0xff010923),
+                    )),
                 Text(
                   'Change Password',
                   style: TextStyle(
                     color: const Color(0xff01071D),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18.sp,
                   ),
                 ),
                 SizedBox(
@@ -48,6 +56,42 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             SizedBox(
               height: 86.h,
             ),
+            CustomTextField(
+              hintText: 'Old Password',
+              passwordController: _oldPasswordController,
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            CustomTextField(
+              hintText: 'New Password',
+              passwordController: _newPasswordController,
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            CustomTextField(
+              hintText: 'Confirm Password',
+              passwordController: _confirmPasswordController,
+            ),
+            SizedBox(
+              height: 56.h,
+            ),
+            MaterialButton(
+              shape: RoundedRectangleBorder(
+             borderRadius: BorderRadius.circular(16.r,),),
+              color: PrimaryBlue,
+              onPressed: () {},
+              padding: EdgeInsets.symmetric(vertical: 18.h,),
+              minWidth: double.infinity,
+              child: Text(
+                'Change password',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600),
+              ),
+            ),
           ],
         ),
       ),
@@ -56,13 +100,27 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
 }
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({ Key? key }) : super(key: key);
+  final String hintText;
+  final TextEditingController passwordController;
+
+  const CustomTextField({
+    Key? key,
+    required this.hintText,
+    required this.passwordController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: passwordController,
       decoration: InputDecoration(
-         
+        fillColor: Background1,
+        hintText: hintText,
+        hintStyle: BodyText1.copyWith(color: Text3),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12.r),
+          borderSide: BorderSide.none,
+        ),
       ),
     );
   }
