@@ -51,7 +51,6 @@ class CoinListWidget extends StatelessWidget {
                 },
                 itemCount: coins.length,
                 itemBuilder: (context, index) {
-                 
                   return GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(
@@ -118,13 +117,24 @@ class CoinListWidget extends StatelessWidget {
                                 ),
                               ),
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
+                                  Container(
+                                    width: 54,
+                                    height: 21,
+                                    child: SvgPicture.network(
+                                        'https://www.coingecko.com/coins/${RegExp(r'([0-9])+').firstMatch(coins[index].image)?.group(0)}/sparkline.svg'),
+                                  ),
+                                  SizedBox(
+                                    width: 42,
+                                  ),
                                   Column(
                                     mainAxisSize: MainAxisSize.min,
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsets.only(bottom: 4),
+                                        padding:
+                                            const EdgeInsets.only(bottom: 4),
                                         child: Text(
                                           '\$' +
                                               coins[index]
@@ -135,16 +145,16 @@ class CoinListWidget extends StatelessWidget {
                                         ),
                                       ),
                                       Text(
-                                           coins[index]
-                                            .price_change_percentage_7d_in_currency
-                                            .toStringAsFixed(2) +
-                                        '%',
+                                        coins[index]
+                                                .price_change_percentage_7d_in_currency
+                                                .toStringAsFixed(2) +
+                                            '%',
                                         style: BodyText2.copyWith(
-                                                color: coins[index]
-                                                    .price_change_percentage_7d_in_currency >=
-                                                0
-                                            ? Color(0xff009000)
-                                            : Color(0xffE24949),
+                                          color: coins[index]
+                                                      .price_change_percentage_7d_in_currency >=
+                                                  0
+                                              ? Color(0xff009000)
+                                              : Color(0xffE24949),
                                         ),
                                       )
                                     ],

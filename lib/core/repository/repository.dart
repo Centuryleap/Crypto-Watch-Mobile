@@ -33,9 +33,12 @@ class Repository {
 
       return coinGeckoList!;
     } catch (SocketException) {
-      print(SocketException);
+     print(SocketException);
       print('No internet');
-      return CoinGeckoList.withError('');
+      print(box?.getAt(0));
+     coinGeckoList = box?.getAt(0) ;
+    
+      return coinGeckoList!;
     }
   }
 
