@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../app/app_constants.dart';
+
 class ContainerListWidget extends StatelessWidget {
   final String title;
   final IconData icon;
@@ -15,14 +17,14 @@ class ContainerListWidget extends StatelessWidget {
         top: 16.h,
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Background1,
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
         children: [
           Icon(
             icon,
-            color: const Color(0xff888C99),
+            color: Text3,
             size: 20.sp,
           ),
           SizedBox(
@@ -30,11 +32,8 @@ class ContainerListWidget extends StatelessWidget {
           ),
           Text(
             title,
-            style: TextStyle(
-              color: const Color(0xff272D43),
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w300,
-            ),
+            style: BodyText1.copyWith(color: Text2,),
+            
           ),
         ],
       ),
