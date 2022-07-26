@@ -1,10 +1,10 @@
-import 'package:cryptowatch/presentation/components/widgets/container_list_widget.dart';
-import 'package:cryptowatch/presentation/components/widgets/notification_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../app/app_routes.dart';
+import '../../components/widgets/container_list_widget.dart';
+import '../../components/widgets/notification_list_widget.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
