@@ -8,6 +8,8 @@
 .buildlog/
 .history
 .svn/
+.fvm/fvm_config.json
+.fvm/flutter_sdk
 
 # IntelliJ related
 *.iml
