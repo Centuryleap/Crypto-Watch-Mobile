@@ -1,6 +1,5 @@
 import 'package:cryptowatch/core/repository/repository.dart';
 import 'package:cryptowatch/presentation/screens/account/settings_screen.dart';
-import 'package:cryptowatch/presentation/screens/price%20alert/price_alert_screen.dart';
 import 'package:cryptowatch/presentation/screens/watchlist_screen.dart';
 import 'package:cryptowatch/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +18,7 @@ class BottomNavigationScreen extends StatefulWidget {
 }
 
 class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
+  
   var currentIndex = 0;
   Repository repository = Repository();
 
@@ -31,13 +31,11 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     final pages = [
-      // HomeScreen(repository: repository),
-      // WatchlistScreen( repository: repository,),
-      PriceAlertScreen(),
-      SettingsScreen(),
-      PriceAlertScreen(),
-      SettingsScreen(),
-    ];
+    HomeScreen(repository: repository),
+    WatchlistScreen( repository: repository,),
+    Text('Third'),
+    SettingsScreen(),
+  ];
     return Scaffold(
       body: IndexedStack(
         index: currentIndex,
@@ -60,7 +58,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             BottomNavigationBarItem(
               label: 'Home',
               icon: Padding(
-                padding: EdgeInsets.only(
+                padding:  EdgeInsets.only(
                   bottom: 7.w,
                 ),
                 child: Icon(
@@ -68,9 +66,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                 ),
               ),
               activeIcon: Padding(
-                padding: EdgeInsets.only(
-                  bottom: 7.w,
-                ),
+                padding:  EdgeInsets.only(bottom: 7.w,),
                 child: Icon(
                   IconlyBold.home,
                   color: const Color(0xff072692),
@@ -88,7 +84,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                 ),
               ),
               activeIcon: Padding(
-                padding: EdgeInsets.only(
+                padding:  EdgeInsets.only(
                   bottom: 7.w,
                 ),
                 child: SvgPicture.asset(
@@ -99,7 +95,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             BottomNavigationBarItem(
               label: 'Notification',
               icon: Padding(
-                padding: EdgeInsets.only(
+                padding:  EdgeInsets.only(
                   bottom: 7.w,
                 ),
                 child: Icon(
@@ -107,7 +103,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                 ),
               ),
               activeIcon: Padding(
-                padding: EdgeInsets.only(
+                padding:  EdgeInsets.only(
                   bottom: 7.w,
                 ),
                 child: Image.asset(
@@ -118,7 +114,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             BottomNavigationBarItem(
               label: 'Settings',
               icon: Padding(
-                padding: EdgeInsets.only(
+                padding:  EdgeInsets.only(
                   bottom: 7.w,
                 ),
                 child: Icon(
@@ -126,7 +122,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                 ),
               ),
               activeIcon: Padding(
-                padding: EdgeInsets.only(
+                padding:  EdgeInsets.only(
                   bottom: 7.w,
                 ),
                 child: Icon(
@@ -141,3 +137,5 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
     );
   }
 }
+
+
