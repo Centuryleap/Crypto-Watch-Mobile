@@ -36,11 +36,9 @@ class AuthProvider with ChangeNotifier {
     var result;
 
     final Map<String, dynamic> loginData = {
-      'user': {
         'email': email,
         'password': password
-      }
-    };
+      };
 
     _loggedInStatus = Status.Authenticating;
     notifyListeners();
@@ -69,21 +67,22 @@ class AuthProvider with ChangeNotifier {
       notifyListeners();
       result = {
         'status': false,
-        'message': json.decode(response.body)['error']
+        'message': json.decode(response.body)['data']['msg']
       };
     }
     return result;
   }
 
-   Future<ResponseModel> register(String email, String password,) async {
+   Future<ResponseModel> register(String email, String password,String confirmPassword) async {
     late ResponseModel responseModel;
-    final Map<String, dynamic> registrationData = {
-      'user': {
-        'Email': email,
-        'Password': password,
-      }
-    };
-     Response response = await post(
+    final Map<String, dynamic> registrationData = 
+      {
+        'email': email,
+        'password': password,
+        'confirmpassword': confirmPassword,
+      };
+    
+     Response response = await put(
       Uri.parse(AppUrl.register),
         body: json.encode(registrationData),
         headers: {'Content-Type': 'application/json'});

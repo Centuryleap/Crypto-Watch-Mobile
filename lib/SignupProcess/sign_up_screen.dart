@@ -28,8 +28,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
       if (_formKey.currentState!.validate()) {
         String email = emailController.text.trim();
         String password = passwordController.text.trim();
+        String confirmPassword= confirmPasswordController.text.trim();
 
-        auth.register(email, password).then((response) {
+        auth.register(email, password,confirmPassword).then((response) {
           if (response.isSuccess) {
             print('sucess');
             Navigator.of(context).push(MaterialPageRoute(

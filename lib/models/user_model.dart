@@ -1,18 +1,17 @@
 
 class User {
-  int? userId;
-  String? email;
-  String? password;
-  String? jwt;
+   String? message;
+  String? token;
+  String? userId;
+ 
 
-  User({this.userId, this.email, this.password, this.jwt});
+  User({this.userId, this.token, this.message,});
 
   factory User.fromJson(Map<String, dynamic> responseData) {
     return User(
+        message: responseData['message'],
+        token: responseData['token'],
         userId: responseData['id'],
-        email: responseData['email'],
-        password: responseData['password'],
-        jwt: responseData['jwt'],
     );
   }
 }
