@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     provider.setFutureCoins = futureCoins;
     final allStringId = provider.allStrings;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xffFAFAFA),
       body: RefreshIndicator(
         onRefresh: () async {
           setState(() {
@@ -74,8 +74,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text(
                         'All Coins',
                         style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          fontFamily: 'Argentum-Sans',
+                          color: Color(0xff01071D)
                         ),
                       ),
                       GestureDetector(
@@ -87,10 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   futureCoins, allStringId)));
                         },
                         child: Text('View all',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                color: PrimaryBlue,
-                                fontSize: 16)),
+                            style: BodyText1.copyWith(color: Primary2)),
                       )
                     ],
                   ),

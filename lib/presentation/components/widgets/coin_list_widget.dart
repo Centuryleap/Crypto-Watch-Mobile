@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cryptowatch/app/app_constants.dart';
 import 'package:cryptowatch/core/coingeckomodels/cg_list_coins.dart';
 import 'package:cryptowatch/core/provider/crypto_pro.dart';
 import 'package:cryptowatch/core/repository/repository.dart';
@@ -94,23 +95,16 @@ class CoinListWidget extends StatelessWidget {
                             children: [
                               SizedBox(
                                 width: 120,
-                                child: Text(
-                                  coins[index].name,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
+                                child: Text(coins[index].name,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: BodyText1),
                               ),
                               SizedBox(height: 5),
                               Text(
-                                '\$' + coins[index].current_price.toString(),
-                                style: TextStyle(
-                                  color: Color(0xff929292),
-                                  fontWeight: FontWeight.w400,
-                                ),
+                                coins[index].symbol.toUpperCase(),
+                                // '\$' + coins[index].current_price.toString(),
+                                style: BodyText3.copyWith(color: Text3),
                               ),
                             ],
                           ),
@@ -123,36 +117,77 @@ class CoinListWidget extends StatelessWidget {
                                 ),
                               ),
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Text(
-                                    coins[index]
-                                            .price_change_percentage_7d_in_currency
-                                            .toStringAsFixed(2) +
-                                        '%',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: coins[index]
-                                                    .price_change_percentage_7d_in_currency >=
-                                                0
-                                            ? Color(0xff4caf50)
-                                            : Color(0xffe52f15),
-                                        fontWeight: FontWeight.w400),
+                                  Container(
+                                    width: 54,
+                                    height: 21,
+                                    child: SvgPicture.network(
+                                        'https://www.coingecko.com/coins/${RegExp(r'([0-9])+').firstMatch(coins[index].image)?.group(0)}/sparkline.svg'),
                                   ),
-                                  SizedBox(width: 10),
-                                  IconButton(
-                                    icon: magic.contains(coins[index].id)
-                                        ? Icon(IconlyBold.star)
-                                        : Icon(IconlyLight.star),
-                                    color: magic.contains(coins[index].id)
-                                        ? Color(0xffF7936F)
-                                        : Colors.grey,
-                                    onPressed: () {
-                                      magic.contains(coins[index].id)
-                                          ? provider2
-                                              .removeCoin(coins[index].id)
-                                          : provider2.addCoin(coins[index].id);
-                                    },
+                                  SizedBox(
+                                    width: 42,
+                                  ),
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 4),
+                                        child: Text(
+                                          '\$' +
+                                              coins[index]
+                                                  .current_price
+                                                  .toString(),
+                                          style: BodyText1.copyWith(
+                                              color: Color(0xff272D43)),
+                                        ),
+                                      ),
+                                      Text(
+                                        coins[index]
+                                                .price_change_percentage_7d_in_currency
+                                                .toStringAsFixed(2) +
+                                            '%',
+                                        style: BodyText2.copyWith(
+                                          color: coins[index]
+                                                      .price_change_percentage_7d_in_currency >=
+                                                  0
+                                              ? Color(0xff009000)
+                                              : Color(0xffE24949),
+                                        ),
+                                      )
+                                    ],
                                   )
+                                  // Text(
+                                  //   coins[index]
+                                  //           .price_change_percentage_7d_in_currency
+                                  //           .toStringAsFixed(2) +
+                                  //       '%',
+                                  //   style: TextStyle(
+                                  //       fontSize: 16,
+                                  //       color: coins[index]
+                                  //                   .price_change_percentage_7d_in_currency >=
+                                  //               0
+                                  //           ? Color(0xff4caf50)
+                                  //           : Color(0xffe52f15),
+                                  //       fontWeight: FontWeight.w400),
+                                  // ),
+                                  // SizedBox(width: 10),
+                                  // IconButton(
+                                  //   icon: magic.contains(coins[index].id)
+                                  //       ? Icon(IconlyBold.star)
+                                  //       : Icon(IconlyLight.star),
+                                  //   color: magic.contains(coins[index].id)
+                                  //       ? Color(0xffF7936F)
+                                  //       : Colors.grey,
+                                  //   onPressed: () {
+                                  //     magic.contains(coins[index].id)
+                                  //         ? provider2
+                                  //             .removeCoin(coins[index].id)
+                                  //         : provider2.addCoin(coins[index].id);
+                                  //   },
+                                  // )
                                 ],
                               ),
                             ],
