@@ -1,7 +1,11 @@
-import 'package:cryptowatch/presentation/screens/login/sign_in_screen.dart';
-import 'package:cryptowatch/presentation/screens/login/sign_up_screen.dart';
-import 'package:cryptowatch/presentation/screens/login/splash_screen.dart';
+
 import 'package:flutter/material.dart';
+
+import '../presentation/screens/account/change_password.dart';
+import '../presentation/screens/login/sign_in_screen.dart';
+import '../presentation/screens/login/sign_up_screen.dart';
+import '../presentation/screens/login/splash_screen.dart';
+import '../presentation/screens/login/forgot_password.dart';
 
 // * This is a "centralized" control of the app routes which keeps the code clean.
 // * Having this single class that handles the entire routing of your app is very nice as it fully embraces
@@ -12,6 +16,8 @@ class AppRoutes {
   static const splashScreen = '/';
   static const signUpView = '/signUp';
   static const signInView = '/signIn';
+   static const changePassword = '/changePassword';
+  static const forgetPassword = '/forgetPassword';
 
   static Route routes(RouteSettings settings) {
     switch (settings.name) {
@@ -26,6 +32,14 @@ class AppRoutes {
       case signInView:
         return MaterialPageRoute(
           builder: (_) => SignInScreen(),
+        );
+        case changePassword:
+        return MaterialPageRoute(
+          builder: (_) => ChangePasswordScreen(),
+        );
+                 case forgetPassword:
+        return MaterialPageRoute(
+          builder: (_) => ForgetPasswordScreen(),
         );
 
       default:

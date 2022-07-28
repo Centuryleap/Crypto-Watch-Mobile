@@ -1,5 +1,6 @@
 import 'package:cryptowatch/core/repository/repository.dart';
 import 'package:cryptowatch/presentation/screens/account/settings_screen.dart';
+import 'package:cryptowatch/presentation/screens/price%20alert/price_alert_screen.dart';
 import 'package:cryptowatch/presentation/screens/watchlist_screen.dart';
 import 'package:cryptowatch/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -33,8 +34,8 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
     final pages = [
     HomeScreen(repository: repository),
     WatchlistScreen( repository: repository,),
-    Text('Third'),
-    SettingsScreen(),
+     PriceAlertScreen(),
+      SettingsScreen(),
   ];
     return Scaffold(
       body: IndexedStack(
