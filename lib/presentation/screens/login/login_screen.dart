@@ -1,8 +1,9 @@
 import 'package:cryptowatch/app/app_constants.dart';
 import 'package:cryptowatch/presentation/screens/bottom_navigation_screen.dart';
-import 'package:cryptowatch/presentation/screens/login/forgot_password.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
+import '../../../app/app_routes.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -84,10 +85,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 35,
               ),
               GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ForgetPasswordScreen()));
-                  },
+                  onTap: () =>
+                      Navigator.of(context).pushNamed(AppRoutes.forgetPassword),
                   child: Text(
                     'Forgot Password?',
                     style: TextStyle(
@@ -121,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 alignment: Alignment.center,
                 child: RichText(
                   text: TextSpan(
-                      text: 'i don\'t have an account, ',
+                      text: 'I  don\'t have an account, ',
                       style: TextStyle(
                           fontSize: 14,
                           color: Colors.black,
