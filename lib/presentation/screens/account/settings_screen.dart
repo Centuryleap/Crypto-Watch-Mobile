@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
@@ -23,7 +22,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 24.w,
-              vertical: 72.h,
+              vertical: 52.h,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,6 +158,4 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
-
-  
 }
