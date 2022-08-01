@@ -104,7 +104,7 @@ print(response.statusCode);
     final Map<String, dynamic> responseData = json.decode(response.body);
 
     print(response.statusCode);
-    if (response.statusCode == 200) {
+    if (response.statusCode==200) {
       var userData = responseData['data'];
 
       User authUser = User.fromJson(userData);
