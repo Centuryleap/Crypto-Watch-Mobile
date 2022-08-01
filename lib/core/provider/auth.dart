@@ -23,21 +23,19 @@ enum Status {
 }
 
 class AuthProvider with ChangeNotifier {
-
   Status _loggedInStatus = Status.NotLoggedIn;
   Status _registeredInStatus = Status.NotRegistered;
 
   Status get loggedInStatus => _loggedInStatus;
   Status get registeredInStatus => _registeredInStatus;
 
-
   Future<Map<String, dynamic>> login(String email, String password) async {
     var result;
 
     final Map<String, dynamic> loginData = {
-        'email': email,
-        'password': password
-      };
+      'email': email,
+      'password': password
+    };
 
     _loggedInStatus = Status.Authenticating;
     notifyListeners();
@@ -45,69 +43,68 @@ class AuthProvider with ChangeNotifier {
     Response response = await post(
       Uri.parse(AppUrl.login),
       body: json.encode(loginData),
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json'
+      },
     );
-
+    print(response.statusCode);
     if (response.statusCode == 200) {
-      final Map<String, dynamic> responseData = json.decode(response.body);
+      var responseData = json.decode(response.body);
 
-      var userData = responseData['data'];
-
-      User authUser = User.fromJson(userData);
+      User authUser = User.fromJson(responseData);
 
       UserPreferences().saveUser(authUser);
 
       _loggedInStatus = Status.LoggedIn;
       notifyListeners();
 
-      result = {'status': true, 'message': 'Successful', 'user': authUser};
+      result = {
+        'status': true,
+        'message': 'Successful',
+        'user': authUser
+      };
     } else {
       _loggedInStatus = Status.NotLoggedIn;
       notifyListeners();
       result = {
         'status': false,
-        'message': json.decode(response.body)['data']['msg']
+        'message': json.decode(response.body)["message"]
       };
     }
     return result;
   }
 
-   Future<ResponseModel> register(String email, String password,String confirmPassword) async {
+  Future<ResponseModel> register(String email, String password, String confirmPassword) async {
     late ResponseModel responseModel;
-    final Map<String, dynamic> registrationData = 
-      {
-        'email': email,
-        'password': password,
-        'confirmpassword': confirmPassword,
-      };
-    
-     Response response = await put(
-      Uri.parse(AppUrl.register),
-        body: json.encode(registrationData),
-        headers: {'Content-Type': 'application/json'});
-
-      if (response.statusCode == 200) {
-      final Map<String, dynamic> responseData = json.decode(response.body);
-      var data = responseData['data'];
+    final Map<String, dynamic> registrationData = {
+      'email': email,
+      'password': password,
+      'confirmpassword': confirmPassword,
+    };
+    print(registrationData);
+    Response response = await post(Uri.parse(AppUrl.register), body: json.encode(registrationData), headers: {
+      'Content-Type': 'application/json'
+    });
+print(response.statusCode);
+    if (response.statusCode == 200) {
+      var responseData = json.decode(response.body);
+      var data = responseData["data"];
       _loggedInStatus = Status.LoggedIn;
       notifyListeners();
-      responseModel = ResponseModel(true, data["message"]);
+      responseModel = ResponseModel(true, "Registered Succesfully");
     } else {
-      responseModel = ResponseModel(false, json.decode(response.body).statusText!);
+      responseModel = ResponseModel(false, json.decode(response.body)["message"]);
     }
 
-      return responseModel;
-    } 
-   
-  
+    return responseModel;
+  }
 
-static Future<FutureOr> onValue(Response response) async {
+  static Future<FutureOr> onValue(Response response) async {
     var result;
     final Map<String, dynamic> responseData = json.decode(response.body);
 
     print(response.statusCode);
     if (response.statusCode == 200) {
-
       var userData = responseData['data'];
 
       User authUser = User.fromJson(userData);
@@ -132,6 +129,10 @@ static Future<FutureOr> onValue(Response response) async {
 
   static onError(error) {
     print("the error is $error.detail");
-    return {'status': false, 'message': 'Unsuccessful Request', 'data': error};
+    return {
+      'status': false,
+      'message': 'Unsuccessful Request',
+      'data': error
+    };
   }
   }
