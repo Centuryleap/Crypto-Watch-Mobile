@@ -1,8 +1,6 @@
 
 import 'dart:async';
 import 'dart:convert';
-import 'dart:html';
-import 'dart:io';
 import 'package:cryptowatch/app/util/appUrl.dart';
 import 'package:cryptowatch/app/util/sharedpreferences.dart';
 import 'package:cryptowatch/core/models/response_model.dart';

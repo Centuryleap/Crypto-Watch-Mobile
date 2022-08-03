@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 //Old Constants, soon to be removed when we stop using everything in the app
 TextStyle DashBoardBodyBold = TextStyle();
@@ -36,11 +37,11 @@ Color Background1 = Color(0xffFFFFFF);
 Color Background2 = Color(0xffFAFAFA);
 
 
-TextStyle Header0 = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w600, fontSize: 32);
-TextStyle Header1 = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w500, fontSize: 24);
-TextStyle Header2 = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w500, fontSize: 16);
-TextStyle Header3 = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w500, fontSize: 14);
-TextStyle BodyText0  = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w300, fontSize: 16);
-TextStyle BodyText1  = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w300, fontSize: 14);
-TextStyle BodyText2  = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w300, fontSize: 12);
-TextStyle BodyText3  = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w300, fontSize: 10);
+TextStyle Header0 = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w600, fontSize: 32.sp);
+TextStyle Header1 = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w500, fontSize: 24.sp);
+TextStyle Header2 = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w500, fontSize: 16.sp);
+TextStyle Header3 = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w500, fontSize: 14.sp);
+TextStyle BodyText0  = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w300, fontSize: 16.sp);
+TextStyle BodyText1  = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w300, fontSize: 14.sp);
+TextStyle BodyText2  = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w300, fontSize: 12.sp);
+TextStyle BodyText3  = TextStyle(fontFamily: 'Argentum-Sans', fontWeight: FontWeight.w300, fontSize: 10.sp);

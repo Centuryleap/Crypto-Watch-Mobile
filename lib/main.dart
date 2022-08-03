@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (BuildContext context) => CryptoProviders(),
       child: ScreenUtilInit(
-        designSize: const Size(390, 900),
+        designSize: const Size(390, 844),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (BuildContext context, Widget? child) {

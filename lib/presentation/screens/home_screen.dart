@@ -1,11 +1,19 @@
+import 'dart:async';
+
 import 'package:cryptowatch/core/coingeckomodels/cg_list_coins.dart';
 import 'package:cryptowatch/core/provider/crypto_pro.dart';
 import 'package:cryptowatch/core/repository/repository.dart';
+import 'package:cryptowatch/presentation/components/widgets/horizontal_watchlist_widget.dart';
 import 'package:cryptowatch/presentation/screens/all_coins_screens.dart';
 import 'package:cryptowatch/app/app_constants.dart';
 import 'package:cryptowatch/presentation/components/widgets/coin_list_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatefulWidget {
   final Repository repository;
@@ -31,6 +39,14 @@ class _HomeScreenState extends State<HomeScreen> {
     final provider = Provider.of<CryptoProviders>(context, listen: false);
     provider.setFutureCoins = futureCoins;
     final allStringId = provider.allStrings;
+    final watchlistSymbol = provider.watchlistStrings;
+    final allCoins = repository.coinGeckoList!.cg_dataModel;
+    final coins = allCoins
+        .where((element) => watchlistSymbol.contains(element.id))
+        .toList();
+    var coinIconUrl =
+        'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/';
+
     return Scaffold(
       backgroundColor: const Color(0xffFAFAFA),
       body: SafeArea(
@@ -43,31 +59,65 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SingleChildScrollView(
             child: Padding(
                 padding: EdgeInsets.only(
-                  top: 84,
-                  left: 24,
-                  right: 24,
+                  top: 42.h,
+                  left: 24.w,
+                  right: 24.w,
                 ),
                 child: Column(
                   children: [
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Cryptowatch',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 20.sp,
+                              color: Primary1,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(right: 16.w),
+                            child: Icon(
+                              Iconsax.notification,
+                              size: 24.sp,
+                              color: Primary1,
+                            ),
+                          )
+                        ]),
+                    SizedBox(
+                      height: 32.h,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'My Watchlist',
                           style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20,
-                          ),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16.sp,
+                              fontFamily: 'Argentum-Sans',
+                              color: Text1),
                         ),
                         Text('View all',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                color: PrimaryBlue,
-                                fontSize: 16))
+                            style: BodyText1.copyWith(color: Primary2))
                       ],
                     ),
                     SizedBox(
-                      height: 218,
+                      height: 12.h,
+                    ),
+                    FutureBuilder(
+                        future: repository.getCoins(),
+                        builder: ((context, snapshot) {
+                          if (snapshot.hasData) {
+                            return HorizontalWatchlistWidget(
+                                repository: repository);
+                          }
+                          return Container();
+                        })),
+                    //HorizontalWatchlistWidget(repository: repository),
+                    SizedBox(
+                      height: 52.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,8 +125,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           'All Coins',
                           style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16.sp,
                               fontFamily: 'Argentum-Sans',
                               color: Color(0xff01071D)),
                         ),
