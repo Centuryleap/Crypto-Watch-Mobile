@@ -12,8 +12,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatefulWidget {
   final Repository repository;
@@ -34,19 +32,16 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+  bool isLoaded = false;
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<CryptoProviders>(context, listen: false);
     provider.setFutureCoins = futureCoins;
     final allStringId = provider.allStrings;
-    final watchlistSymbol = provider.watchlistStrings;
-    final allCoins = repository.coinGeckoList!.cg_dataModel;
-    final coins = allCoins
-        .where((element) => watchlistSymbol.contains(element.id))
-        .toList();
-    var coinIconUrl =
-        'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/';
-
+   Future.delayed(Duration(seconds: 5), (){ setState(() {
+     isLoaded = true;
+   });});
     return Scaffold(
       backgroundColor: const Color(0xffFAFAFA),
       body: SafeArea(
@@ -106,16 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: 12.h,
                     ),
-                    FutureBuilder(
-                        future: repository.getCoins(),
-                        builder: ((context, snapshot) {
-                          if (snapshot.hasData) {
-                            return HorizontalWatchlistWidget(
-                                repository: repository);
-                          }
-                          return Container();
-                        })),
-                    //HorizontalWatchlistWidget(repository: repository),
+                   isLoaded? HorizontalWatchlistWidget(repository: repository) : Container(),
                     SizedBox(
                       height: 52.h,
                     ),
