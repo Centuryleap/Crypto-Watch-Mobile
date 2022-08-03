@@ -12,7 +12,7 @@ class WatchlistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double all_coins_height = MediaQuery.of(context).size.height * 0.8;
     final provider = Provider.of<CryptoProviders>(context, listen: false);
-    final futureCoins = provider.getFutureCoins;
+   
     final watchlistSymbol = provider.watchlistStrings;
     return Scaffold(
       backgroundColor: Colors.white,

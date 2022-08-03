@@ -11,6 +11,8 @@ class CryptoProviders extends ChangeNotifier {
   //this stores the string symbols that will be used to identify coins added to the watchlist
   List<String> _watchlistStrings = [
     "bitcoin",
+    "solana",
+    "ethereum"
   ];
 
 //getter methods to get list of of allStringSymbol and watchlistStringSymbol

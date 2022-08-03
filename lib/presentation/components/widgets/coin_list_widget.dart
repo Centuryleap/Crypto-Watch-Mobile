@@ -26,7 +26,6 @@ class CoinListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<CryptoProviders>(context);
-    final magic = provider.watchlistStrings;
     final provider2 = Provider.of<CryptoProviders>(context, listen: false);
 
     var coinIconUrl =
@@ -125,7 +124,13 @@ class CoinListWidget extends StatelessWidget {
                                     width: 54,
                                     height: 21,
                                     child: SvgPicture.network(
-                                        'https://www.coingecko.com/coins/${RegExp(r'([0-9])+').firstMatch(coins[index].image)?.group(0)}/sparkline.svg'),
+                                      'https://www.coingecko.com/coins/${RegExp(r'([0-9])+').firstMatch(coins[index].image)?.group(0)}/sparkline.svg',
+                                      color: coins[index]
+                                                  .price_change_percentage_7d_in_currency >=
+                                              0
+                                          ? Color(0xff009000)
+                                          : Color(0xffE24949),
+                                    ),
                                   ),
 
                                   SizedBox(width: 42),
@@ -141,6 +146,8 @@ class CoinListWidget extends StatelessWidget {
                                               coins[index]
                                                   .current_price
                                                   .toString(),
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
                                           style: BodyText1.copyWith(
                                               color: Color(0xff272D43)),
                                         ),

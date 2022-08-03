@@ -41,7 +41,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
       body: IndexedStack(
         index: currentIndex,
         children: pages,
-      ),
+      ), 
       bottomNavigationBar: SizedBox(
         height: 80.h,
         child: BottomNavigationBar(
