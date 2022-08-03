@@ -30,16 +30,16 @@ class HorizontalWatchlistWidget extends StatelessWidget {
         itemCount: coins.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => Container(
-            height: 180.h,
+            height: 150.h,
             width: 164.w,
             margin: EdgeInsets.only(right: 16.w),
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+            padding: EdgeInsets.only(left: 16,right:16.w, bottom: 16.h, top: 30.h),
             decoration: BoxDecoration(
               color: Colors.black,
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(15.r),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,mainAxisSize: MainAxisSize.min,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -100,7 +100,42 @@ class HorizontalWatchlistWidget extends StatelessWidget {
                       ),
                     )
                   ],
-                )
+                ),
+                SizedBox(
+                  height: 8.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '${coins[index].symbol.toUpperCase()}/USD',
+                      style: BodyText3.copyWith(color: Text4),
+                    ),
+                    Text(
+                      coins[index]
+                              .price_change_percentage_7d_in_currency
+                              .toStringAsFixed(2) +
+                          '%',
+                      style: BodyText2.copyWith(
+                        fontSize: 10.sp,
+                        color: coins[index]
+                                    .price_change_percentage_7d_in_currency >=
+                                0
+                            ? Color(0xff008000)
+                            : Color(0xffE24949),
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 5.h,
+                ),
+                Text(
+                  '\$' + coins[index].current_price.toString(),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: BodyText1.copyWith(color: Background2),
+                ),
               ],
             )),
       ),
